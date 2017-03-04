@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pizza Point Counter!</title>
+
+    <!-- JQuery Link -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">></script>
+
+	 <script type="text/javascript" src="assets/javascript/app.js" ></script>
+	
+	<!-- Reset CSS Link -->
+	 <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<!-- Firebase link -->
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+
+    <!-- Local CSS Link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+	<div class="container">
+	    <div class="jumbotron">
+	    	<div class="jumbo-row row">
+		    	<div class="col-md-12">
+		    		<div class="row title" id="title">
+				    	<h2>Rock. Paper. Scissors.</h2>
+			    	</div>
+			    	<div class="row">
+			    		<div class="col-md-4">
+			    			<p>Rock beats Scissors.</p>
+			    		</div>
+			    		<div class="col-md-4">
+			    			<p>Scissors beats Paper.</p>
+			    		</div>
+			    		<div class="col-md-4">
+			    			<p>Paper beats Rock.</p>
+			    		</div>	
+					</div>
+					<div class="row">
+						<div class="instructions">
+							<p>To make your selection, click the buttons labeled "Rock", "Paper", or "Scissors".</p>
+							<p>Once both players have made their selections the winner will be announced and the score will be updated.</p>
+							<p>Feel free to use chat box to message your opponent.</p>
+						</div>
+					</div>
+			    </div>
+			</div>
+	    </div>
+
+		<div class="row">
+			<div class="col-md-4 col-player">
+				<div class="player">
+					<div class="row">
+						<h2>Player 1:</h2>
+					</div>
+					<div class="row">
+						<button id="p1-btn-rock" class="btn btn-rock btn-primary btn-lg">Rock</button>
+					</div>
+					<div class="row">
+						<button id="p1-btn-scissors" class="btn btn-scissors btn-primary btn-lg">Scissors</button>
+					</div>
+					<div class="row">
+						<button id="p1-btn-paper" class="btn btn-paper btn-primary btn-lg">Paper</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-chat">
+				<div class="chat" id="chat-div">
+					<div class="row">
+						<h2>Chat:</h2>
+					</div>
+					<div class="row">
+						<div class ="chat-box" id="chat-box"></div>
+					</div>
+					<div class="row">
+						<form id="contact-form" method="post" enctype="text/plain">
+							<div class="row">
+								<textarea type="text" name="comment" placeholder="Chat here" rows="1" cols="30" id="Message-box"></textarea><br>
+							 </div>
+							<input type="submit" id="submit-button" name="submit-button" value="send"><br>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-player">
+				<div class="player">
+					<div class="row">
+						<h2>Player 2:</h2>
+					</div>
+					<div class="row">
+						<button id="p2-btn-rock" class="btn btn-rock btn-primary btn-lg">Rock</button>
+					</div>
+					<div class="row">
+						<button id="p2-btn-scissors" class="btn btn-scissors btn-primary btn-lg">Scissors</button>
+					</div>
+					<div class="row">
+						<button id="p2-btn-paper" class="btn btn-paper btn-primary btn-lg">Paper</button>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+
+
+</body>
+</html>
