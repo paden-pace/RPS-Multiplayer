@@ -1,9 +1,7 @@
-		// Initialize Firebase
+
 $(document).ready(function(){
 
-		console.log("page open");
-
-// Initialize Firebase
+	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyC-yc_z3Rq2DlxixCpSlaeTj3bxnGrAerQ",
 		authDomain: "train-time-pjp.firebaseapp.com",
@@ -13,52 +11,46 @@ $(document).ready(function(){
 	};
 	firebase.initializeApp(config);
 
-		// Create a variable to reference the database.
+	// Create a variable to reference the database.
 	var database = firebase.database();
 
-		// Initial Values
+	// Initial Variables
 	var name = "";
 	var dest = "";
 	var first = 0;
 	var freq = 0;
 	
 
-	// Capture Button Click
+	// Submit Button Click
 	$("#submit-button").on("click", function(event) {
 		event.preventDefault();
 
 
-		// Grabbed values from text boxes
+		// Grab values from text boxes
 		name = $("#nameInput").val().trim();
 		dest = $("#destInput").val().trim();
 		first = $("#firstInput").val().trim();
 		freq = $("#freqInput").val().trim();
 
 
-			// First Time (pushed back 1 year to make sure it comes before current time)
-			var firstTime = moment(first, "hh:mm").subtract(1, "years");
-			console.log(firstTime);
+		// First Time (pushed back 1 year to make sure it comes before current time)
+		var firstTime = moment(first, "hh:mm").subtract(1, "years");
 
-			// Current Time
-    		var currentTime = moment();
-    		console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+		// Current Time
+		var currentTime = moment();
 
-		   // Difference between the times
-    		var diffTime = moment().diff(moment(firstTime), "minutes");
-    		console.log("DIFFERENCE IN TIME: " + diffTime);
+	   // Difference between the times
+		var diffTime = moment().diff(moment(firstTime), "minutes");
 
-		    // Time apart (remainder)
-    		var remainTime = diffTime % freq;
-    		console.log(remainTime);
+	    // Time apart (remainder)
+		var remainTime = diffTime % freq;
 
-		   // Minute Until Train
-    		var minAway = freq - remainTime;
-    		console.log("MINUTES TILL TRAIN: " + minAway);
+	   // Minute Until Train
+		var minAway = freq - remainTime;
 
-		   // Next Train
-    		var nextTrain = moment().add(minAway, "minutes");
-    		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-    		var next = (moment(nextTrain).format("hh:mm"));
+	   // Next Train
+		var nextTrain = moment().add(minAway, "minutes");
+		var next = (moment(nextTrain).format("hh:mm"));
 
 
 		// Code for handling the push
@@ -98,9 +90,6 @@ $(document).ready(function(){
 
     var markup = "<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().dest + "</td><td>" + snapshot.val().freq + "</td><td>" + snapshot.val().next + "</td><td>" + snapshot.val().minAway + "</td></tr>";
 		$("#curTrainTable").append(markup);
-      	// Change the HTML to reflect
-    	console.log(snapshot.val());
     });
-
 
 });
